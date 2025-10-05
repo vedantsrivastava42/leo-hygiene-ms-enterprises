@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, ShoppingCart, Trash2, Plus, Minus } from 'lucide-react'
+import { X, ShoppingCart, Trash2 } from 'lucide-react'
 import type { CartItem } from '../types/CartItem'
 import { openWhatsApp } from '../utils/whatsappCart'
 import './CartPopup.css'

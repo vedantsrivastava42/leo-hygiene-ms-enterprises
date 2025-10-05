@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Phone, Mail, MapPin, Send, MessageCircle } from 'lucide-react'
+import { Phone, Mail, Send, MessageCircle } from 'lucide-react'
 import emailjs from '@emailjs/browser'
 import './ContactSection.css'
 

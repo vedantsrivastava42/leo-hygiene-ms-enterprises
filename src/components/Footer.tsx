@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Phone, Mail, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react'
+import { Phone, Mail, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react'
 import './Footer.css'
 
 const Footer: React.FC = () => {
