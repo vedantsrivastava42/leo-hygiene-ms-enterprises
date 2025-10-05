@@ -107,15 +107,19 @@ const Footer: React.FC = () => {
             <h4>Contact Info</h4>
             <div className="contact-item">
               <Phone size={18} />
-              <a href="tel:+919876543210">+91 9876543210</a>
+              <a href="tel:+919128106245">+91 9128106245</a>
+            </div>
+            <div className="contact-item">
+              <Phone size={18} />
+              <a href="tel:+919430065284">+91 9430065284</a>
             </div>
             <div className="contact-item">
               <Mail size={18} />
-              <a href="mailto:info@msenterprises.com">info@msenterprises.com</a>
+              <a href="mailto:leo.msenterprises@gmail.com">leo.msenterprises@gmail.com</a>
             </div>
             <div className="contact-item">
-              <MapPin size={18} />
-              <span>MS Enterprises, Industrial Area, City, State - 123456</span>
+              <Mail size={18} />
+              <a href="mailto:kumar.atul706@gmail.com">kumar.atul706@gmail.com</a>
             </div>
           </motion.div>
         </div>
@@ -128,7 +132,7 @@ const Footer: React.FC = () => {
           className="footer-bottom"
         >
           <div className="footer-bottom-content">
-            <p>&copy; {currentYear} MS Enterprises. All rights reserved.</p>
+            <p>&copy; {currentYear} MS Enterprises | Owned by Mr. ATUL KUMAR. All rights reserved.</p>
             <div className="footer-bottom-links">
               <a href="#privacy">Privacy Policy</a>
               <a href="#terms">Terms of Service</a>

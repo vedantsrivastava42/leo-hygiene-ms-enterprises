@@ -97,7 +97,7 @@ const ProcessSection: React.FC = () => {
             <div className="support-content">
               <h3>24/7 Customer Support</h3>
               <p>
-                Our dedicated support team is always ready to assist you with any questions 
+                We are always ready to assist you with any questions 
                 or concerns. We believe in building long-term relationships with our clients.
               </p>
               <div className="support-features">
@@ -107,15 +107,11 @@ const ProcessSection: React.FC = () => {
                 </div>
                 <div className="support-feature">
                   <span className="feature-icon">✓</span>
-                  <span>Technical assistance</span>
-                </div>
-                <div className="support-feature">
-                  <span className="feature-icon">✓</span>
                   <span>Product training</span>
                 </div>
                 <div className="support-feature">
                   <span className="feature-icon">✓</span>
-                  <span>Maintenance support</span>
+                  <span>Delivery support</span>
                 </div>
               </div>
             </div>

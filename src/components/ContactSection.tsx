@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Phone, Mail, MapPin, Send, MessageCircle } from 'lucide-react'
+import emailjs from '@emailjs/browser'
 import './ContactSection.css'
 
 const ContactSection: React.FC = () => {
@@ -20,39 +21,69 @@ const ContactSection: React.FC = () => {
     }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log('Form submitted:', formData)
-    // Reset form
-    setFormData({
-      name: '',
-      organization: '',
-      email: '',
-      phone: '',
-      message: ''
-    })
-    alert('Thank you for your inquiry! We will contact you soon.')
+    
+    try {
+      // EmailJS configuration - you'll need to replace these with your actual values
+      const serviceId = 'service_wgzqczj'
+      const templateId = 'template_4b1ugjd'
+      const publicKey = 'UMyuKFJyjt6XZN5iW'
+      
+      // Prepare template parameters
+      const templateParams = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        organization: formData.organization || 'Not provided',
+        message: formData.message || 'No message provided',
+        time: new Date().toLocaleString(),
+        to_email: 'leo.msenterprises@gmail.com, kumar.atul706@gmail.com'
+      }
+      
+      // Send email using EmailJS
+      await emailjs.send(serviceId, templateId, templateParams, publicKey)
+      
+      // Reset form
+      setFormData({
+        name: '',
+        organization: '',
+        email: '',
+        phone: '',
+        message: ''
+      })
+      
+      alert('Thank you for your inquiry! We will contact you soon.')
+    } catch (error) {
+      console.error('Error sending email:', error)
+      alert('Sorry, there was an error sending your message. Please try again or contact us directly.')
+    }
   }
 
   const contactInfo = [
     {
       icon: <Phone size={24} />,
       title: 'Phone',
-      details: '+91 9876543210',
-      action: 'tel:+919876543210'
+      details: '+91 9128106245',
+      action: 'tel:+919128106245'
+    },
+    {
+      icon: <Phone size={24} />,
+      title: 'Alternate Phone',
+      details: '+91 9430065284',
+      action: 'tel:+919430065284'
     },
     {
       icon: <Mail size={24} />,
       title: 'Email',
-      details: 'info@msenterprises.com',
-      action: 'mailto:info@msenterprises.com'
+      details: 'leo.msenterprises@gmail.com',
+      action: 'mailto:leo.msenterprises@gmail.com'
     },
     {
-      icon: <MapPin size={24} />,
-      title: 'Address',
-      details: 'MS Enterprises, Industrial Area, City, State - 123456',
-      action: null
+      icon: <Mail size={24} />,
+      title: 'Alternate Email',
+      details: 'kumar.atul706@gmail.com',
+      action: 'mailto:kumar.atul706@gmail.com'
     }
   ]
 
@@ -103,14 +134,13 @@ const ContactSection: React.FC = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="organization">Organization *</label>
+                  <label htmlFor="organization">Organization</label>
                   <input
                     type="text"
                     id="organization"
                     name="organization"
                     value={formData.organization}
                     onChange={handleInputChange}
-                    required
                     placeholder="Your organization name"
                   />
                 </div>
@@ -138,19 +168,18 @@ const ContactSection: React.FC = () => {
                     value={formData.phone}
                     onChange={handleInputChange}
                     required
-                    placeholder="+91 9876543210"
+                    placeholder="+91 9128106245"
                   />
                 </div>
               </div>
 
               <div className="form-group">
-                <label htmlFor="message">Message *</label>
+                <label htmlFor="message">Message</label>
                 <textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  required
                   rows={5}
                   placeholder="Tell us about your requirements, quantity needed, and any specific preferences..."
                 />
@@ -203,11 +232,11 @@ const ContactSection: React.FC = () => {
             </div>
 
             <div className="cta-buttons">
-              <a href="tel:+919876543210" className="btn btn-primary">
+              <a href="tel:+919128106245" className="btn btn-primary">
                 <Phone size={20} />
                 Call Now
               </a>
-              <a href="https://wa.me/919876543210" className="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/919128106245" className="btn btn-secondary" target="_blank" rel="noopener noreferrer">
                 WhatsApp
               </a>
             </div>

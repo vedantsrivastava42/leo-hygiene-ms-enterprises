@@ -5,7 +5,7 @@ import './HeroSection.css'
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="hero-section">
+    <section id="home" className="hero-section">
       <div className="hero-image-container">
         <img src={heroImage} alt="LEO Hygiene Solutions" className="hero-image" />
         <div className="hero-overlay">

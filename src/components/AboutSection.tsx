@@ -7,7 +7,7 @@ const AboutSection: React.FC = () => {
   const milestones = [
     {
       icon: <Building2 size={40} />,
-      number: '10+',
+      number: '30+',
       label: 'Institutions Served',
       description: 'Schools, offices, and organizations trust our products'
     },
@@ -58,8 +58,8 @@ const AboutSection: React.FC = () => {
             <h3>Our Story</h3>
             <p>
               Since 2001, MS Enterprises has been at the forefront of providing 
-              premium hygiene solutions to schools, offices, and organizations across 
-              the nation. Our LEO brand represents our commitment to quality, 
+              premium hygiene solutions to schools, offices, and organizations. 
+              Our LEO brand represents our commitment to quality, 
               reliability, and excellence in every product we deliver.
             </p>
             <p>
@@ -73,6 +73,12 @@ const AboutSection: React.FC = () => {
               seeking reliable, premium hygiene solutions. We believe that every 
               school, office, and organization deserves access to products that 
               protect and care for their communities.
+            </p>
+            <p>
+              <strong>Owned and Managed by Mr. Atul Kumar</strong>, MS Enterprises 
+              continues to uphold the highest standards of quality and service, 
+              ensuring that every client receives personalized attention and 
+              exceptional products tailored to their specific needs.
             </p>
           </motion.div>
 
