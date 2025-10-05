@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
 import AboutSection from './components/AboutSection'
@@ -12,8 +12,26 @@ import type { CartItem } from './types/CartItem'
 import './App.css'
 
 function App() {
-  const [cartItems, setCartItems] = useState<CartItem[]>([])
+  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
+    const savedCart = localStorage.getItem('leo-hygiene-cart')
+    if (savedCart) {
+      try {
+        const parsedCart = JSON.parse(savedCart)
+        return parsedCart
+      } catch (error) {
+        console.error('Error parsing cart from localStorage:', error)
+        localStorage.removeItem('leo-hygiene-cart')
+        return []
+      }
+    }
+    return []
+  })
+  
   const [isCartOpen, setIsCartOpen] = useState(false)
+
+  useEffect(() => {
+    localStorage.setItem('leo-hygiene-cart', JSON.stringify(cartItems))
+  }, [cartItems])
 
   const addToCart = (item: CartItem) => {
     setCartItems(prev => {
@@ -53,6 +71,7 @@ function App() {
 
   const clearCart = () => {
     setCartItems([])
+    localStorage.removeItem('leo-hygiene-cart')
   }
 
   const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0)
