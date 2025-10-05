@@ -10,7 +10,7 @@ interface ProductsSectionProps {
 }
 
 // Import the catalog PDF
-import catalogPdf from '../assets/catalog_compressed.pdf'
+import catalogPdf from '../assets/Catalog_compressed.pdf'
 
 // Import product images
 import handwash1L from '../assets/1L Handwash.png'
