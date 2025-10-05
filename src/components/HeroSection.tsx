@@ -1,13 +1,15 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import heroImage from '../assets/hero1.jpg'
+import heroImageMobile from '../assets/hero1phone.jpg'
 import './HeroSection.css'
 
 const HeroSection: React.FC = () => {
   return (
     <section id="home" className="hero-section">
       <div className="hero-image-container">
-        <img src={heroImage} alt="LEO Hygiene Solutions" className="hero-image" />
+        <img src={heroImage} alt="LEO Hygiene Solutions" className="hero-image hero-image-desktop" />
+        <img src={heroImageMobile} alt="LEO Hygiene Solutions" className="hero-image hero-image-mobile" />
         <div className="hero-overlay">
           <div className="hero-content">
             <motion.div

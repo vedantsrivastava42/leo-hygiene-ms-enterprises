@@ -17,6 +17,16 @@
   object-position: center;
 }
 
+/* Desktop image - visible by default */
+.hero-image-desktop {
+  display: block;
+}
+
+/* Mobile image - hidden by default */
+.hero-image-mobile {
+  display: none;
+}
+
 .hero-overlay {
   position: absolute;
   top: 0;
@@ -73,6 +83,15 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  /* Switch to mobile image */
+  .hero-image-desktop {
+    display: none;
+  }
+  
+  .hero-image-mobile {
+    display: block;
+  }
+  
   .hero-title {
     font-size: 2.5rem;
   }
