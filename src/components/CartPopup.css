@@ -336,6 +336,18 @@
   box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
 }
 
+.cart-disclaimer {
+  margin-top: 15px;
+  text-align: right;
+}
+
+.cart-disclaimer p {
+  font-size: 14px;
+  color: #9ca3af;
+  margin: 0;
+  font-style: italic;
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .cart-popup {
@@ -355,6 +367,11 @@
   
   .cart-actions {
     flex-direction: column;
+  }
+  
+  .cart-disclaimer {
+    text-align: center;
+    margin-top: 10px;
   }
 }
 

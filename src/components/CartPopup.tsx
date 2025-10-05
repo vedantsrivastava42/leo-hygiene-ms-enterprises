@@ -125,6 +125,9 @@ const CartPopup: React.FC<CartPopupProps> = ({ cartItems, isOpen, onClose, onRem
                         Order via WhatsApp
                       </button>
                     </div>
+                    <div className="cart-disclaimer">
+                      <p>*Packaging might differ according to availability</p>
+                    </div>
                   </div>
                 </>
               )}
