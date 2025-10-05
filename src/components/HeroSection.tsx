@@ -5,7 +5,7 @@ import './HeroSection.css'
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="hero-section">
+    <section id="home" className="hero-section">
       <div className="hero-image-container">
         <img src={heroImage} alt="LEO Hygiene Solutions" className="hero-image" />
         <div className="hero-overlay">
@@ -28,11 +28,11 @@ const HeroSection: React.FC = () => {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="hero-cta"
               >
-                <a href="#products" className="btn btn-primary">
+                <a href="#products" className="btn btn-secondary">
                   Shop with us
                 </a>
                 <a href="#contact" className="btn btn-secondary">
-                  Get Quote
+                  Get Contact
                 </a>
               </motion.div>
             </motion.div>

@@ -13,14 +13,9 @@ import mahavirCancer from '../assets/Mahavir Cancer Sansthan.png'
 const ClientsSection: React.FC = () => {
   const clients = [
     {
-      name: 'BD Public School',
-      logo: bdPublicSchool,
-      type: 'Educational Institution'
-    },
-    {
-      name: 'Holiday Royal',
-      logo: holidayRoyal,
-      type: 'Hospitality & Tourism'
+      name: 'Mahavir Cancer Sansthan',
+      logo: mahavirCancer,
+      type: 'Healthcare Institution'
     },
     {
       name: 'Internationals',
@@ -33,10 +28,16 @@ const ClientsSection: React.FC = () => {
       type: 'Educational Institution'
     },
     {
-      name: 'Mahavir Cancer Sansthan',
-      logo: mahavirCancer,
-      type: 'Healthcare Institution'
+      name: 'BD Public School',
+      logo: bdPublicSchool,
+      type: 'Educational Institution'
+    },
+    {
+      name: 'Holiday Royal',
+      logo: holidayRoyal,
+      type: 'Hospitality & Tourism'
     }
+
   ]
 
   const testimonials = [
@@ -72,7 +73,7 @@ const ClientsSection: React.FC = () => {
         >
           <h2 className="section-title">Trusted by Leading Institutions</h2>
           <p className="section-subtitle">
-            We serve schools, offices, and organizations nationwide
+            We serve schools, offices, and organizations
           </p>
         </motion.div>
 
