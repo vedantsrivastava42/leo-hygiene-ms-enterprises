@@ -1,8 +1,14 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
+import { ShoppingCart } from 'lucide-react'
 import './Navbar.css'
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  cartCount: number
+  onCartClick: () => void
+}
+
+const Navbar: React.FC<NavbarProps> = ({ cartCount, onCartClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const scrollToSection = (sectionId: string) => {
@@ -60,10 +66,24 @@ const Navbar: React.FC = () => {
           </motion.button>
         </div>
 
-        <div className="navbar-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
+        <div className="navbar-right">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="cart-icon-btn"
+            onClick={onCartClick}
+          >
+            <ShoppingCart size={20} />
+            {cartCount > 0 && (
+              <span className="cart-badge">{cartCount}</span>
+            )}
+          </motion.button>
+
+          <div className="navbar-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
+          </div>
         </div>
       </div>
     </nav>

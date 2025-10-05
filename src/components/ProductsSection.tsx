@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Download } from 'lucide-react'
+import { Download, ShoppingCart } from 'lucide-react'
+import type { CartItem } from '../types/CartItem'
 import './ProductsSection.css'
+import { handleBuyNow } from '../utils/whatsapp'
+
+interface ProductsSectionProps {
+  onAddToCart: (item: CartItem) => void
+}
 
 // Import the catalog PDF
 import catalogPdf from '../assets/catalog_compressed.pdf'
@@ -33,7 +39,8 @@ interface Product {
   fragrance: string
 }
 
-const ProductsSection: React.FC = () => {
+const ProductsSection: React.FC<ProductsSectionProps> = ({ onAddToCart }) => {
+  
   const createDefaultSizes = (products: Product[]): Record<string, '1L' | '5L'> => {
     const defaultSizes: Record<string, '1L' | '5L'> = {}
     products.forEach(product => {
@@ -51,7 +58,7 @@ const ProductsSection: React.FC = () => {
       image1L: handwash1L,
       image5L: handwash5L,
       originalPrice1L: 120,
-      originalPrice5L: 1000,
+      originalPrice5L: 550,
       discountedPrice1L: 70,
       discountedPrice5L: 250,
       fragrance: 'Customizable'
@@ -152,6 +159,19 @@ const ProductsSection: React.FC = () => {
     return Math.round(((originalPrice - discountedPrice) / originalPrice) * 100)
   }
 
+  const handleAddToCart = (product: Product) => {
+    const cartItem: CartItem = {
+      id: product.id,
+      name: product.name,
+      size: productSizes[product.id],
+      quantity: productQuantities[product.id],
+      originalPrice: productSizes[product.id] === '1L' ? product.originalPrice1L : product.originalPrice5L,
+      discountedPrice: productSizes[product.id] === '1L' ? product.discountedPrice1L : product.discountedPrice5L,
+      image: productSizes[product.id] === '1L' ? product.image1L : product.image5L
+    }
+    onAddToCart(cartItem)
+  }
+
   const handleDownloadCatalog = () => {
     // Create a temporary link element
     const link = document.createElement('a')
@@ -248,21 +268,30 @@ const ProductsSection: React.FC = () => {
 
                 <div className="product-quantity">
                   <span className="quantity-label">Quantity:</span>
-                  <div className="quantity-counter">
-                    <button
-                      className="quantity-btn quantity-decrease"
-                      onClick={() => handleQuantityChange(product.id, 'decrement')}
-                      disabled={productQuantities[product.id] <= 1}
+                  <div className="quantity-controls">
+                    <div className="quantity-counter">
+                      <button
+                        className="quantity-btn quantity-decrease"
+                        onClick={() => handleQuantityChange(product.id, 'decrement')}
+                        disabled={productQuantities[product.id] <= 1}
+                      >
+                        −
+                      </button>
+                      <span className="quantity-value">{productQuantities[product.id]}</span>
+                      <button
+                        className="quantity-btn quantity-increase"
+                        onClick={() => handleQuantityChange(product.id, 'increment')}
+                        disabled={productQuantities[product.id] >= 99}
+                      >
+                        +
+                      </button>
+                    </div>
+                    <button 
+                      className="add-to-cart-btn"
+                      onClick={() => handleAddToCart(product)}
                     >
-                      −
-                    </button>
-                    <span className="quantity-value">{productQuantities[product.id]}</span>
-                    <button
-                      className="quantity-btn quantity-increase"
-                      onClick={() => handleQuantityChange(product.id, 'increment')}
-                      disabled={productQuantities[product.id] >= 99}
-                    >
-                      +
+                      <ShoppingCart size={16} />
+                      Add to Cart
                     </button>
                   </div>
                 </div>
@@ -272,7 +301,15 @@ const ProductsSection: React.FC = () => {
                 </div>
                 <p className="product-description">{product.description}</p>
                 <div className="product-actions">
-                  <button className="btn btn-primary">
+                  <button 
+                    className="btn btn-primary"
+                    onClick={() => handleBuyNow(
+                      product.name,
+                      productSizes[product.id],
+                      productQuantities[product.id],
+                      productSizes[product.id] === '1L' ? product.discountedPrice1L : product.discountedPrice5L
+                    )}
+                  >
                     Buy Now for ₹{productQuantities[product.id] * (productSizes[product.id] === '1L' ? product.discountedPrice1L : product.discountedPrice5L)}
                     <img src={whatsappIcon} alt="WhatsApp" className="whatsapp-icon" />
                   </button>
