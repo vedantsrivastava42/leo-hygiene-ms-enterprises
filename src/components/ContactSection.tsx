@@ -186,7 +186,7 @@ const ContactSection: React.FC = () => {
               </div>
 
               <button type="submit" className="btn btn-primary submit-btn">
-                <Send size={20} />
+                <Send size={20} style={{ marginRight: '8px' }} />
                 Send Message
               </button>
             </form>

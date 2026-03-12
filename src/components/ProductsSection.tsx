@@ -60,7 +60,7 @@ const ProductsSection: React.FC<ProductsSectionProps> = ({ onAddToCart }) => {
       originalPrice1L: 120,
       originalPrice5L: 550,
       discountedPrice1L: 70,
-      discountedPrice5L: 250,
+      discountedPrice5L: 300,
       fragrance: 'Customizable'
     },
     {
